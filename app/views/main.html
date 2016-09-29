@@ -1,0 +1,73 @@
+<div class="row alert-div"  id="alert">
+  <div class="col-lg-6 pull-rightx`" ng-show="main.loadingData">
+    Fetching Data <img id="loading-img" ng-src="images/loading.gif"/>
+  </div>
+
+  <div class="col-lg-6 " ng-show="main.noDataAvailable">
+    <div class="alert alert-danger" role="alert"> 
+      <strong>Oops!</strong> 
+        There is no data available now. Please try again later.
+    </div>
+  </div>
+</div>
+<div class="row">
+
+  <!-- Table 1 for displaying countries -->
+  <div class="col-lg-8">
+    <table class="table table-bordered" id="country-table">
+      
+      <thead>
+        <tr>
+          <th>
+            Country Name
+          </th>
+
+          <th>
+            Alpha Code
+          </th>          
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="country-row" ng-repeat="country in main.countryData" ng-click="main.getStates(country.alpha3_code)">
+          <td>
+            {{country.name}}
+          </td>
+          <td>
+            {{country.alpha3_code}}
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+
+<!-- table 2 for displaying states when clicked -->
+  <div class="col-lg-4" ng-show="main.showStatesData">
+    <table class="table table-bordered" id="state-table">
+      <thead>
+        <tr>
+          <th>
+            State Name
+          </th>
+
+          <th>
+            Capital
+          </th>          
+        </tr>
+      </thead>  
+
+      <tbody>
+        <tr class="state-row" ng-repeat="state in main.statesData">
+          <td>
+            {{state.name}}
+          </td>
+          <td>
+            {{state.capital}}
+          </td>
+        </tr>
+      </tbody>
+
+    </table>    
+  </div>
+
+</div>
